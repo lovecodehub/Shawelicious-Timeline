@@ -1,0 +1,193 @@
+/* Sunflower Theme CSS */
+:root {
+  --sunflower-yellow: #ffd100;
+  --sunflower-brown: #704214;
+  --sunflower-green: #3a5f0b;
+  --sunflower-light: #fff9e0;
+  --sunflower-accent: #ff9505;
+}
+
+body {
+  font-family: "Comic Sans MS", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--sunflower-light);
+  color: var(--sunflower-brown);
+  margin: 0;
+  padding: 20px;
+
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,50 C30,30 70,30 70,50 C70,70 30,70 30,50 Z" fill="%23FFD10022"/></svg>');
+  background-size: 300px;
+  background-repeat: repeat;
+  animation: bg-wave 500ms linear infinite;
+}
+
+@keyframes bg-wave {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 300px 300px;
+  }
+}
+
+h1 {
+  text-align: center;
+  color: var(--sunflower-brown);
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background: linear-gradient(270deg, #f9d976, #f6e27a, #f9d976, #f39f86);
+  background-size: 800% 800%;
+  animation: animate-bg 3s ease infinite;
+}
+
+@keyframes animate-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+h1::before,
+h1::after {
+  content: "";
+  margin: 0 15px;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background-color: var(--sunflower-green);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  margin-bottom: 50px;
+  position: relative;
+  width: 45%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--sunflower-yellow);
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+
+.timeline-item:nth-child(even) {
+  left: 55%;
+}
+
+.timeline-item::after {
+  content: "🌻";
+  position: absolute;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 24px;
+}
+
+.timeline-item:nth-child(odd)::after {
+  right: -45px;
+}
+
+.timeline-item:nth-child(even)::after {
+  left: -45px;
+}
+
+.timeline-date {
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--sunflower-accent);
+  background-color: var(--sunflower-light);
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.timeline-item img {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border: 3px solid var(--sunflower-yellow);
+}
+
+.timeline-item img:hover {
+  transform: scale(1.03);
+}
+
+.timeline-caption {
+  font-size: 2rem;
+  margin-top: 10px;
+  font-style: italic;
+  text-align: center;
+  color: var(--sunflower-brown);
+}
+
+/* Modal styles */
+#modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-img {
+  max-width: 90%;
+  max-height: 90%;
+  border: 5px solid var(--sunflower-yellow);
+  border-radius: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-item {
+    width: calc(100% - 80px);
+    left: 80px !important;
+  }
+
+  .timeline-item::after {
+    left: -45px !important;
+  }
+}
