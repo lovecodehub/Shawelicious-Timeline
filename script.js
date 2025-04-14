@@ -3,7 +3,7 @@ function openModal(imageName, format) {
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modal-img");
 
-  modalImg.src = `{imageName}.${format}`;
+  modalImg.src = `${imageName}.${format}`;
   modal.style.display = "flex";
 }
 
